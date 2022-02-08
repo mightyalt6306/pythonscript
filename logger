@@ -1,0 +1,26 @@
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+formatter = logging.formatter('%(asctime)s:%(levelname)s:%(message)s:')
+
+file_handler = logging.FileHandler('pythonwiki.txt')
+file_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+
+logging.basicConfig(filename='firstlog.log', level=logging.info,format='%(asctime)s:%(levelname)s:%(message)s:')
+
+fh =open("D:\PythonCode\PycharmProjects\pythonProject\pythonwiki.txt","r")
+search=input("Enter search word")
+s= " "
+count=1
+
+while(s):
+    s=fh.readline()
+    L=s.split()
+    if search in L:
+        logger.info("Line Number:",count,":",s)
+
+    count+=1
